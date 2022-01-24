@@ -16,9 +16,13 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::get('/search', [SearchController::class, 'index']);
-Route::get('/profile', [ProfileController::class, 'index']);
+Route::get('/profile', [SearchController::class, 'index']);
+Route::get('/profile/{id}', [ProfileController::class, 'index']);
+Route::get('/profile/{id}/edit', [ProfileController::class, 'edit']);
+Route::put('profile/{id}', [ProfileController::class, 'update']);
+//Route::get('/profile/{id}', [ProfileController::class, 'show']);
 
 Auth::routes();
 
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
