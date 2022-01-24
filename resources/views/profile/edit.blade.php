@@ -15,29 +15,29 @@
                 <div class="block">
                     <input
                         type="text"
-                        class="block shadow-5xl mb-10 p-2 w-full italic placeholder-gray-400 sm:rounded-md"
+                        class="block shadow-5xl mb-10 p-2 w-full italic placeholder-gray-400 rounded-md"
                         name="name"
                         placeholder="Ваше имя"
                         value="{{ $user->name }}">
                     <input
                         type="text"
-                        class="block shadow-5xl mb-10 p-2 w-full italic placeholder-gray-400 sm:rounded-md"
+                        class="block shadow-5xl mb-10 p-2 w-full italic placeholder-gray-400 rounded-md"
                         name="email"
                         placeholder="Ваша почта"
                         value="{{ $user->email }}">
                     <input
                         type="text"
-                        class="block shadow-5xl mb-10 p-2 w-full italic placeholder-gray-400 sm:rounded-md"
+                        class="block shadow-5xl mb-10 p-2 w-full italic placeholder-gray-400 rounded-md"
                         name="about"
                         placeholder="О себе"
                         value="{{ $user->about }}">
                     <input
                         type="text"
-                        class="block shadow-5xl mb-10 p-2 w-full italic placeholder-gray-400 sm:rounded-md"
+                        class="block shadow-5xl mb-10 p-2 w-full italic placeholder-gray-400 rounded-md"
                         name="city"
                         placeholder="Ваш город"
                         value="{{ $user->city }}">
-                    <button type="submit" class="bg-green-400 block shadow-5xl mb-10 p-2 w-full sm:rounded-md uppercase font-bold">
+                    <button type="submit" class="bg-green-400 block shadow-5xl mb-10 p-2 w-full rounded-md uppercase font-bold">
                         Подтвердить
                     </button>
                 </div>

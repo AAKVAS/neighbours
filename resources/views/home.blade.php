@@ -13,13 +13,14 @@
         <section class="flex flex-col break-words bg-white sm:border-1 sm:rounded-md sm:shadow-sm sm:shadow-lg">
 
             <header class="font-semibold bg-gray-200 text-gray-700 py-5 px-6 sm:py-6 sm:px-8 sm:rounded-t-md">
-                Dashboard
+                Neighbours - сайт для поиска людей по близости. Здесь вы можете общаться с интерисующими вас людьми.
             </header>
 
             <div class="w-full p-6">
-                <p class="text-gray-700">
-                    You are logged in!
+                <p class="text-gray-700 mb-11">
+                    Вы успешно вошли в аккаунт!
                 </p>
+                <a href="{{ url('/search') }}" class="border border-green-600 bg-green-400 p-2 rounded-md">Начать искать</a>
             </div>
         </section>
     </div>
