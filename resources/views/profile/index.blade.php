@@ -20,6 +20,7 @@
             </div>
             <div class="uppercase text-gray-700 font-blond text-xl italic pb-5">
                 Описание: {{ $user->about }}
+
             </div>
         </div>
     </div>

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MessageController;
+use App\Events\MessageNotification;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,9 +22,20 @@ Route::get('/profile/{id}', [ProfileController::class, 'index']);
 Route::get('/profile/{id}/edit', [ProfileController::class, 'edit']);
 Route::put('profile/{id}', [ProfileController::class, 'update']);
 
+Route::get('messages/{id}', [MessageController::class, 'index']);
 
 Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+Route::get('/event', function () {
+    event(new MessageNotification('This is my first broadcast message!'));
+});
+
+Route::get('/listen', function () {
+    return view('listen');
+});
 

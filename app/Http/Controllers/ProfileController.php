@@ -26,7 +26,7 @@ class ProfileController extends Controller
             ]);
         }
         else {
-            return view('search');
+            return redirect('home');
         }
 
     }
@@ -40,8 +40,8 @@ class ProfileController extends Controller
                 'user' => $user
             ]);
         }
-        else{
-            return view('search');
+        else {
+            return redirect('home');
         }
     }
 
