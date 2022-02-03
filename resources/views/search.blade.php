@@ -5,11 +5,11 @@
         <h3 class="font-bold text-center sm:mt-6 text-xl mb-6 ">Найдите кого-нибудь поблизости!</h3>
         <div class="flex justify-between ">
             <input type="text" id="search_parameter" name="tag" placeholder="Поиск людей" class="ml-10 w-5/6 h-12 mb-10 mr-5 p-2 rounded-md">
-            <img id="magnifier" src=" {{ URL('images/1200px-Magnifying_glass_icon.svg.png') }}" class="w-[45px] h-[45px]">
+            <img id="magnifierImg" src=" {{ URL('images/1200px-Magnifying_glass_icon.svg.png') }}" class="w-[45px] h-[45px]">
 
         </div>
 
-        <script src=" {{ URL('js/search.js') }}">
+        <script type="application/javascript" src=" {{ URL('js/search.js') }}">
         </script>
     @foreach($users as $user)
         @if($user->id != Auth::user()->id )

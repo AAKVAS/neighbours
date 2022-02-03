@@ -1,5 +1,5 @@
-let magnifier = document.getElementById('magnifier');
-let search_parameter = document.getElementById('search_parameter');
+var magnifier = document.getElementById('magnifierImg');
+var search_parameter = document.getElementById('search_parameter');
 
 magnifier.onclick = function (){
     let pattern = new RegExp(search_parameter.value, 'i');
