@@ -22,7 +22,9 @@ Route::get('/profile/{id}', [ProfileController::class, 'index']);
 Route::get('/profile/{id}/edit', [ProfileController::class, 'edit']);
 Route::put('profile/{id}', [ProfileController::class, 'update']);
 
+
 Route::get('messages/{id}', [MessageController::class, 'index']);
+Route::resource('/messages', MessageController::class);
 
 Auth::routes();
 

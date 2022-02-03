@@ -23,8 +23,29 @@
             <input type="text" id="inputMessage" class="w-5/6 ml-10 h-12 p-2">
             <img id="sendMessageButton" src="{{ URL('images/188-1882365_send-button-png-send-button-icon-png.png') }}" class="h-10 float-right">
         </div>
-        <script type="application/javascript" src=" {{ URL('js/messages.js') }}">
-        </script>
+
+                    <script>
+
+                                    var sendMessageButton = document.getElementById('sendMessageButton');
+                                    var inputMessage = document.getElementById('inputMessage');
+
+                                    sendMessageButton.onclick = function() {
+                                        $.ajax({
+                                            headers: {
+                                                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                                            },
+                                            url: '{{ route('messages.store') }}',
+                                            type: 'POST',
+                                            data: {
+                                                sender: {{ Auth::user()->id }},
+                                                message: inputMessage.value
+                                            },
+                                            success: function (data) {
+                                                alert(data['response']);
+                                            }
+                                        })
+                                    }
+                    </script>
     @else
         <h1 class="text-center text-xl mt-3">Вы не вошли в учётную запись</h1>
     @endif
