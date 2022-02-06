@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Messages extends Model
 {
     use HasFactory;
+
+    protected $table = 'messages';
+    protected $primaryKey = 'id';
+    public $timestamps = true;
+    protected $fillable = ['user_id', 'chat_id', 'message'];
 }

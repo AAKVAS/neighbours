@@ -20,7 +20,7 @@ class MessageController extends Controller
             //$messages = Messages::all()->where('chat_id', '=', $chat[0]->id);
             $messages = Messages::join('users', 'messages.user_id', '=', 'users.id')->where('chat_id', '=', $chat[0]->id)->get();
 
-            return view('messages.index', ['messages' => $messages, 'otherUser' => $otherUser]);
+            return view('messages.index', ['messages' => $messages, 'otherUser' => $otherUser, 'chat_id' => $chat[0]->id]);
         }
         else {
             return redirect('home');
@@ -28,8 +28,20 @@ class MessageController extends Controller
     }
 
     public function store(Request $request) {
+        $sender = $request->sender;
+        $message = $request->message;
+        $chat_id = $request->chat_id;
+
+        $newMessage = Messages::create([
+            'user_id' => $sender,
+            'chat_id' => $chat_id,
+            'message' => $message
+        ]);
+
         return [
-            'response' => 'rabotaem'
+            'sender' => $sender,
+            'message' => $message,
+            'chat_id' => $chat_id
         ];
     }
 

@@ -3,7 +3,7 @@
 @section('content')
 
     @if(isset(Auth::user()->id))
-        <div class="w-4/6">
+        <div class="w-4/6" id="messageArea">
             <div class="text-right text-xl mt-3 mb-6 mr-10">
                 <a href="{{ url('/profile/' . $otherUser->id) }}">{{ $otherUser->name }}</a>
             </div>
@@ -20,32 +20,42 @@
                     {{ $message->message }}
                 </div>
             @endforeach
-            <input type="text" id="inputMessage" class="w-5/6 ml-10 h-12 p-2">
-            <img id="sendMessageButton" src="{{ URL('images/188-1882365_send-button-png-send-button-icon-png.png') }}" class="h-10 float-right">
-        </div>
+                <div class="fixed-bottom mb-10 mt-5 w-4/6">
+                    <input type="text" id="inputMessage" class="w-5/6 ml-10 h-12 p-2 rounded-md">
+                    <img id="sendMessageButton" src="{{ URL('images/188-1882365_send-button-png-send-button-icon-png.png') }}" class="h-10 float-right">
+                </div>
+                </div>
+            <script>
+                let sendMessageButton = document.getElementById('sendMessageButton');
+                let inputMessage = document.getElementById('inputMessage');
 
-                    <script>
+                sendMessageButton.onclick = function() {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: '{{ route('messages.store') }}',
+                        type: 'POST',
+                        data: {
+                            sender: {{ Auth::user()->id }},
+                            chat_id: {{ $chat_id }},
+                            message: inputMessage.value
+                        },
+                        success: function (data) {
+                            let messageArea = document.getElementById('messageArea');
+                            let div = document.createElement('div');
+                            div.className = "ml-10 mb-8 text-xl bg-blue-200 break-all p-4 rounded-md h-auto";
+                            let divText = document.createElement('div');
+                            divText.className = "text-gray-500 text-lg";
+                            divText.innerText = "{{ Auth::user()->name }}";
+                            messageArea.append(div);
+                            div.append(divText);
+                            div.innerHTML += data['message'];
 
-                                    var sendMessageButton = document.getElementById('sendMessageButton');
-                                    var inputMessage = document.getElementById('inputMessage');
-
-                                    sendMessageButton.onclick = function() {
-                                        $.ajax({
-                                            headers: {
-                                                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-                                            },
-                                            url: '{{ route('messages.store') }}',
-                                            type: 'POST',
-                                            data: {
-                                                sender: {{ Auth::user()->id }},
-                                                message: inputMessage.value
-                                            },
-                                            success: function (data) {
-                                                alert(data['response']);
-                                            }
-                                        })
-                                    }
-                    </script>
+                        }
+                    })
+                }
+            </script>
     @else
         <h1 class="text-center text-xl mt-3">Вы не вошли в учётную запись</h1>
     @endif
