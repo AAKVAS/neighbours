@@ -18,7 +18,7 @@
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none font-sans">
     <div id="app">
-        <header class="bg-purple-700 py-6">
+        <header class="bg-purple-700 py-6 fixed-top">
             <div class="container mx-auto flex justify-between items-center px-6">
                 <div>
                     <a href="{{ url('/search') }}" class="text-lg font-semibold text-gray-100 no-underline">
@@ -45,7 +45,9 @@
                 </nav>
             </div>
         </header>
+        <div class="h-20">
 
+        </div>
         @yield('content')
     </div>
 </body>
