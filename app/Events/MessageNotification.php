@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Models\Messages;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -19,7 +20,7 @@ class MessageNotification implements ShouldBroadcast
      *
      * @return void
      */
-    public function __construct($message)
+    public function __construct(Messages $message)
     {
         $this->message = $message;
     }
@@ -31,6 +32,6 @@ class MessageNotification implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new Channel('notification'); //сделай PrivateChannel потом
+        return new PrivateChannel('chats'.$this->message->chat_id);
     }
 }

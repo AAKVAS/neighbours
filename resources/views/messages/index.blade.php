@@ -29,7 +29,9 @@
                     <img id="sendMessageButton" src="{{ URL('images/pngwing.com.png') }}" class="h-10 float-right">
                 </div>
                 </div>
+            <script src="{{asset('js/app.js')}}"></script>
             <script>
+
                 let sendMessageButton = document.getElementById('sendMessageButton');
                 let inputMessage = document.getElementById('inputMessage');
 
@@ -59,6 +61,11 @@
                         }
                     })
                 }
+
+                Echo.private(`chats.{{ $chat_id }}`)
+                    .listen('MessageNotification', (e) => {
+                        console.log(e.chat.user_id);
+                    });
             </script>
     @else
         <h1 class="text-center text-xl mt-3">Вы не вошли в учётную запись</h1>

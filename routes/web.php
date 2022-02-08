@@ -32,11 +32,6 @@ Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->nam
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-
-Route::get('/event', function () {
-    event(new MessageNotification('This is my first broadcast message!'));
-});
-
 Route::get('/listen', function () {
     return view('listen');
 });

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Broadcast;
+use App\Models\Chat;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,19 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-Broadcast::channel('notification', function () {
-    return true;
+Broadcast::channel('chats.{id}', function ($user, $chat_id) {
+    foreach (Chat::find($chat_id)->users as $chatUser){
+        if ($user->id == $chatUser->id) {
+            return true;
+        }
+    }
+    return false;
+/*
+    foreach (Chat::find($chat[0]->id)->users as $chatUser){
+        if (Auth::user()->id == $chatUser->id) {
+            dd('true');
+        }
+    }
+    */
 });
+

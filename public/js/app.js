@@ -5271,9 +5271,13 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); //window.
  *
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+/*
+ const files = require.context('./', true, /\.vue$/i)
+ files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
+
+Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+*/
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29385,7 +29389,7 @@ process.umask = function() { return 0; };
 /***/ ((module) => {
 
 /*!
- * Pusher JavaScript Library v7.0.4
+ * Pusher JavaScript Library v7.0.6
  * https://pusher.com/
  *
  * Copyright 2020, Pusher
@@ -29974,7 +29978,7 @@ var ScriptReceivers = new ScriptReceiverFactory('_pusher_script_', 'Pusher.Scrip
 
 // CONCATENATED MODULE: ./src/core/defaults.ts
 var Defaults = {
-    VERSION: "7.0.4",
+    VERSION: "7.0.6",
     PROTOCOL: 7,
     wsPort: 80,
     wssPort: 443,
