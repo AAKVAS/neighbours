@@ -32,7 +32,4 @@ Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->nam
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/listen', function () {
-    return view('test');
-});
 

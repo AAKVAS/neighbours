@@ -26,7 +26,7 @@ class MessageController extends Controller
             $chat = $otherUserChats->intersect($thisUserChats);
 
             //$messages = Messages::all()->where('chat_id', '=', $chat[0]->id);
-            $messages = Messages::join('users', 'messages.user_id', '=', 'users.id')->where('chat_id', '=', $chat[0]->id)->get();
+            $messages = Messages::join('users', 'messages.user_id', '=', 'users.id')->where('chat_id', '=', $chat[0]->id)->select('messages.*', 'users.name')->get()->sortBy('id');
 
             return view('messages.index', ['messages' => $messages, 'otherUser' => $otherUser, 'chat_id' => $chat[0]->id]);
         }

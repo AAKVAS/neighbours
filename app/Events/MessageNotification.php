@@ -3,6 +3,7 @@
 namespace App\Events;
 
 use App\Models\Messages;
+use App\Models\User;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
@@ -33,8 +34,17 @@ class MessageNotification implements ShouldBroadcast
     public function broadcastOn()
     {
         return new PrivateChannel('chats.'.$this->message->chat_id);
-        //return new Channel('chats.'.$this->message->chat_id);
-
     }
 
+    public function broadcastWith()
+    {
+        return [
+            'id' => $this->message->id,
+            'user_id' => $this->message->user_id,
+            'chat_id' => $this->message->chat_id,
+            'message' => $this->message->message,
+            'updated_at' => $this->message->updated_at,
+            'user_name' => User::find($this->message->user_id)->name
+            ];
+    }
 }

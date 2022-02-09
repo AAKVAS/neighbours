@@ -13,4 +13,5 @@ class Messages extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
     protected $fillable = ['user_id', 'chat_id', 'message'];
+    protected $visible = ['id', 'user_id', 'chat_id', 'message', 'updated_at'];
 }
