@@ -33,6 +33,6 @@ Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])->name('h
 
 
 Route::get('/listen', function () {
-    return view('listen');
+    return view('test');
 });
 

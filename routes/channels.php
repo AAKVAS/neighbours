@@ -14,19 +14,17 @@ use App\Models\Chat;
 |
 */
 
-Broadcast::channel('chats.{id}', function ($user, $chat_id) {
+Broadcast::channel('chats.{chat_id}', function ($user, $chat_id) {
     foreach (Chat::find($chat_id)->users as $chatUser){
         if ($user->id == $chatUser->id) {
             return true;
         }
     }
     return false;
-/*
-    foreach (Chat::find($chat[0]->id)->users as $chatUser){
-        if (Auth::user()->id == $chatUser->id) {
-            dd('true');
-        }
-    }
-    */
 });
 
+/*
+Broadcast::channel('chats.{chat_id}', function () {
+    return true;
+});
+*/

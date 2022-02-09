@@ -32,6 +32,9 @@ class MessageNotification implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('chats'.$this->message->chat_id);
+        return new PrivateChannel('chats.'.$this->message->chat_id);
+        //return new Channel('chats.'.$this->message->chat_id);
+
     }
+
 }

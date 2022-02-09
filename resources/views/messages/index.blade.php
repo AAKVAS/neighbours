@@ -31,6 +31,11 @@
                 </div>
             <script src="{{asset('js/app.js')}}"></script>
             <script>
+                chat_id = {{ $chat_id }};
+                Echo.channel(`private-chats.${ chat_id }`)
+                    .listen('MessageNotification', (e) => {
+                        alert(e);
+                    });
 
                 let sendMessageButton = document.getElementById('sendMessageButton');
                 let inputMessage = document.getElementById('inputMessage');
@@ -48,7 +53,7 @@
                             message: inputMessage.value
                         },
                         success: function (data) {
-                            let messageArea = document.getElementById('messageArea');
+                            /*let messageArea = document.getElementById('messageArea');
                             let div = document.createElement('div');
                             div.className = "ml-10 mb-8 text-xl bg-blue-200 break-all p-4 rounded-md h-auto";
                             let divText = document.createElement('div');
@@ -57,15 +62,12 @@
                             messageArea.append(div);
                             div.append(divText);
                             div.innerHTML += data['message'];
-
+*/
                         }
                     })
                 }
 
-                Echo.private(`chats.{{ $chat_id }}`)
-                    .listen('MessageNotification', (e) => {
-                        console.log(e.chat.user_id);
-                    });
+
             </script>
     @else
         <h1 class="text-center text-xl mt-3">Вы не вошли в учётную запись</h1>
