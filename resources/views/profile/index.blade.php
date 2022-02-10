@@ -3,7 +3,7 @@
 @section('content')
 
 @if(isset(Auth::user()->id))
-    <div class="w-3/4 py-10">
+    <div class="w-3/4 py-10 ml-10">
         @if(Auth::user()->id == $user->id)
         <div class="float-right">
             <a href="/profile/{{ Auth::user()->id }}/edit" class="border-b-2 pd-2 border-dotted italic text-green-500">

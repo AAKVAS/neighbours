@@ -13,10 +13,18 @@ class CreateUsersInChatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_in_chats', function (Blueprint $table) {
+       /* Schema::create('users_in_chats', function (Blueprint $table) {
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('chat_id');
             $table->foreign('sender')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('chat_id')->references('id')->on('chats')->onDelete('cascade');
+        });*/
+
+        Schema::create('chat_user', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('chat_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('chat_id')->references('id')->on('chats')->onDelete('cascade');
         });
     }
@@ -28,6 +36,6 @@ class CreateUsersInChatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_in_chats');
+        Schema::dropIfExists('chat_user');
     }
 }

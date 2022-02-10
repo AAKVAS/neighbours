@@ -36,7 +36,13 @@
                     .listen('MessageNotification', (e) => {
                         let messageArea = document.getElementById('messageArea');
                         let div = document.createElement('div');
-                        div.className = "ml-10 mb-8 text-xl bg-blue-200 break-all p-4 rounded-md h-auto";
+                        if (e.user_id == {{ Auth::user()->id }}){
+                            div.className = "ml-10 mb-8 text-xl bg-blue-200 break-all p-4 rounded-md h-auto";
+                        }
+                        else {
+                            div.className = "ml-10 mb-8 text-xl bg-gray-200 break-all p-4 rounded-md h-auto";
+                        }
+
                         let divText = document.createElement('div');
                         divText.className = "text-gray-500 text-lg";
                         divText.innerText = e.user_name;
