@@ -31,6 +31,28 @@
                 </div>
             <script src="{{asset('js/app.js')}}"></script>
             <script>
+                sendMessage = function () {
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        url: '{{ route('messages.store') }}',
+                        type: 'POST',
+                        data: {
+                            sender: {{ Auth::user()->id }},
+                            chat_id: {{ $chat_id }},
+                            message: inputMessage.value
+                        },
+                        success: function (data) {
+                        }
+                    })
+                }
+                document.addEventListener('keydown', function(event) {
+                    if (event.code == 'Enter') {
+                        sendMessage();
+                    }
+                });
+
                 chat_id = {{ $chat_id }};
                 Echo.channel(`private-chats.${ chat_id }`)
                     .listen('MessageNotification', (e) => {
@@ -54,22 +76,7 @@
                 let sendMessageButton = document.getElementById('sendMessageButton');
                 let inputMessage = document.getElementById('inputMessage');
 
-                sendMessageButton.onclick = function() {
-                    $.ajax({
-                        headers: {
-                            'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        url: '{{ route('messages.store') }}',
-                        type: 'POST',
-                        data: {
-                            sender: {{ Auth::user()->id }},
-                            chat_id: {{ $chat_id }},
-                            message: inputMessage.value
-                        },
-                        success: function (data) {
-                        }
-                    })
-                }
+                sendMessageButton.onclick = sendMessage();
 
 
             </script>
