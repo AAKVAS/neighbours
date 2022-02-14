@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="w-4/6">
+    <div class="">
         <h3 class="font-bold text-center sm:mt-6 text-xl mb-6 ">Найдите кого-нибудь поблизости!</h3>
         <div class="flex justify-between ">
             <input type="text" id="search_parameter" name="tag" placeholder="Поиск людей" class="ml-10 w-5/6 h-12 mb-10 mr-5 p-2 rounded-md">

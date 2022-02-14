@@ -11855,8 +11855,16 @@ Ensure the default browser behavior of the `hidden` attribute.
   float: right;
 }
 
+.float-left {
+  float: left;
+}
+
 .m-auto {
   margin: auto;
+}
+
+.m-2 {
+  margin: 0.5rem;
 }
 
 .my-6 {
@@ -11929,6 +11937,26 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: 1.25rem;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
+}
+
+.ml-8 {
+  margin-left: 2rem;
+}
+
+.ml-6 {
+  margin-left: 1.5rem;
+}
+
+.ml-9\/12 {
+  margin-left: 75%;
+}
+
 .block {
   display: block;
 }
@@ -11977,6 +12005,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 5rem;
 }
 
+.h-28 {
+  height: 7rem;
+}
+
 .h-auto {
   height: auto;
 }
@@ -11989,16 +12021,40 @@ Ensure the default browser behavior of the `hidden` attribute.
   height: 3.5rem;
 }
 
+.h-48 {
+  height: 12rem;
+}
+
+.h-\[20px\] {
+  height: 20px;
+}
+
+.h-\[18px\] {
+  height: 18px;
+}
+
+.h-\[25px\] {
+  height: 25px;
+}
+
+.h-\[39px\] {
+  height: 39px;
+}
+
+.h-\[30px\] {
+  height: 30px;
+}
+
+.h-\[24px\] {
+  height: 24px;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
 
 .w-full {
   width: 100%;
-}
-
-.w-4\/6 {
-  width: 66.666667%;
 }
 
 .w-5\/6 {
@@ -12013,12 +12069,40 @@ Ensure the default browser behavior of the `hidden` attribute.
   width: 30px;
 }
 
+.w-4\/6 {
+  width: 66.666667%;
+}
+
 .w-2\/6 {
   width: 33.333333%;
 }
 
 .w-3\/4 {
   width: 75%;
+}
+
+.w-3\/12 {
+  width: 25%;
+}
+
+.w-\[20px\] {
+  width: 20px;
+}
+
+.w-\[25px\] {
+  width: 25px;
+}
+
+.w-\[18px\] {
+  width: 18px;
+}
+
+.w-\[24px\] {
+  width: 24px;
+}
+
+.w-\[26px\] {
+  width: 26px;
 }
 
 .cursor-pointer {
