@@ -48,9 +48,13 @@
         <div class="h-20">
 
         </div>
-        <div class="w-4/6 float-left">
-            @yield('content')
-        </div>
+
+        @guest
+                @yield('content')
+        @else
+            <div class="w-4/6 float-left">
+                @yield('content')
+            </div>
         <div class="w-3/12 float-right h-48 position-fixed ml-9/12">
             <div class="text-xl mt-4">
                 <a href="{{ url('/chatlist') }}">
@@ -69,7 +73,7 @@
                 </a>
             </div>
         </div>
-
+        @endguest
     </div>
 </body>
 </html>

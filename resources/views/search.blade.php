@@ -26,7 +26,7 @@
                     </div>
                     <a href="{{ url('/messages/' . $user->id) }}">
                         <img src="{{ URL('images/email-icon-png-transparent-email-iconpng-images-pluspng-email-icon-png-2400_1714.png')}}"
-                            class="w-[30px] h-[26px]">
+                            class="w-[25px] h-[18px]">
                     </a>
                 </div>
                 <hr class="mt-3 ml-10 bg-orange-200 text-orange-200 h-0.5 mb-10">
