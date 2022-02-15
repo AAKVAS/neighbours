@@ -48,7 +48,6 @@ class ProfileController extends Controller
     public function update(Request $request, $id){
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
             'city' => new NotInteger,
             'about' => 'required'
         ]);
@@ -56,7 +55,6 @@ class ProfileController extends Controller
         $user = User::where('id', $id)
             ->update([
                 'name' => $request->name,
-                'email' => $request->email,
                 'about' => $request->about,
                 'city' => $request->city
             ]);

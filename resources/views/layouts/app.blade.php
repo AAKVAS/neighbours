@@ -53,7 +53,7 @@
         </div>
         <div class="w-3/12 float-right h-48 position-fixed ml-9/12">
             <div class="text-xl mt-4">
-                <a href="{{ url('/messageList') }}">
+                <a href="{{ url('/chatlist') }}">
                     <div class="flex justify-center">
                         Сообщения
                         <img class="ml-6 mt-1 h-[18px] w-[25px] " src="{{ URL('images/email-icon-png-transparent-email-iconpng-images-pluspng-email-icon-png-2400_1714.png') }}">
@@ -61,7 +61,7 @@
                 </a>
             </div>
             <div class="text-xl mt-4">
-                <a href="{{ url('/highlightUsers') }}">
+                <a href="{{ url('/highlightusers') }}">
                     <div class="flex justify-center">
                         Помеченные люди
                         <img class="ml-6 mt-1 h-[26px] w-[26px] " src="{{ URL('images/highlight.png') }}">

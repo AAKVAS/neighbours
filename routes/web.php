@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ChatList;
 use App\Events\MessageNotification;
 
 /*
@@ -25,6 +26,8 @@ Route::put('profile/{id}', [ProfileController::class, 'update']);
 
 Route::get('messages/{id}', [MessageController::class, 'index']);
 Route::resource('/messages', MessageController::class);
+
+Route::get('/chatlist', [ChatList::class, 'index']);
 
 Auth::routes();
 
