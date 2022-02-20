@@ -4,7 +4,6 @@
 
     @if(isset(Auth::user()->id))
         <div class="" id="">
-
             <div class="text-right text-xl mt-3 mb-6 mr-10">
                 <a href="{{ url('/profile/' . $otherUser->id) }}">{{ $otherUser->name }}</a>
             </div>

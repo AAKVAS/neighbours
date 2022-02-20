@@ -5,6 +5,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ChatList;
+use App\Http\Controllers\HighlightUsers;
 use App\Events\MessageNotification;
 
 /*
@@ -26,8 +27,11 @@ Route::put('profile/{id}', [ProfileController::class, 'update']);
 
 Route::get('messages/{id}', [MessageController::class, 'index']);
 Route::resource('/messages', MessageController::class);
+Route::resource('highlightusers', HighlightUsers::class);
 
 Route::get('/chatlist', [ChatList::class, 'index']);
+Route::get('/highlightusers', [HighlightUsers::class, 'index']);
+
 
 Auth::routes();
 

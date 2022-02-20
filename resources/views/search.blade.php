@@ -9,8 +9,6 @@
 
         </div>
 
-        <script type="application/javascript" src=" {{ URL('js/search.js') }}">
-        </script>
     @foreach($users as $user)
         @if($user->id != Auth::user()->id )
             <div class="user_info">
@@ -24,10 +22,15 @@
                         </div>
 
                     </div>
-                    <a href="{{ url('/messages/' . $user->id) }}">
-                        <img src="{{ URL('images/email-icon-png-transparent-email-iconpng-images-pluspng-email-icon-png-2400_1714.png')}}"
-                            class="w-[25px] h-[18px]">
-                    </a>
+                    <div class="flex justify-between">
+                        <a href="{{ url('/messages/' . $user->id) }}">
+                            <img src="{{ URL('images/email-icon-png-transparent-email-iconpng-images-pluspng-email-icon-png-2400_1714.png')}}"
+                                 class="w-[25px] mt-1 h-[18px]">
+                        </a>
+                        <img src="{{ URL('images/highlight.png') }}"
+                            class="w-[24px] h-[24px] ml-4 highlight_button"
+                            name="{{ $user->id }}">
+                    </div>
                 </div>
                 <hr class="mt-3 ml-10 bg-orange-200 text-orange-200 h-0.5 mb-10">
             </div>
@@ -35,4 +38,27 @@
             @endif
     @endforeach
     </div>
+    <script>
+        let highlightButton = document.getElementsByClassName('highlight_button');
+        for (var j = 0; j < highlightButton.length; j++) {
+            highlightButton[j].onclick = function () {
+                $.ajax({
+                    headers: {
+                        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url: '{{ route('highlightusers.store') }}',
+                    type: 'POST',
+                    data: {
+                        user_id: {{ Auth::user()->id }},
+                        highlighted_user_id:  this.getAttribute('name'),
+                    },
+                    success: function (data) {
+                        console.log(data);
+                    }
+                });
+            }
+        }
+    </script>
+    <script type="application/javascript" src=" {{ URL('js/search.js') }}">
+    </script>
 @endsection
